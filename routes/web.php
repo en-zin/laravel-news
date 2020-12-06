@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
+use function PHPUnit\Framework\returnSelf;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,26 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/archives/',function() {
-    return view('archives');
-});
-
-Route::get('/archives/{category}/',function($category) {
-    return view('category', ['category' => $category]);
-});
-
-// Route::post('/join/',function() {
-//     return 'おけ';
+// Route::get('/', function () {
+//     return view('welcome');
 // });
 
-// Route::get('/join/',function() {
-//     return Redirect() -> to('/');
-// });
+//POST通信の練習
+Route::get('add/post','PostsController@post');
+Route::post('add/post', 'PostsController@result');
 
-// Route::get('/{id}/',function($id) {
-//     return $id. 'ページ';
-// });
+Route::get('/','MainController@main');
+Route::post('/','MainController@result');
