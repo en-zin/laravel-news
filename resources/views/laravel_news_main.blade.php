@@ -30,7 +30,7 @@
                     <input type="text" name="title" id="title">
                 </div>
                 <!-- post_container_title終了 -->
-                <div class="post_container_contents">
+                <div class="post_container_text">
                     <label for="contents">
                         <p>
                             記事：
@@ -38,7 +38,7 @@
                     </label>
                     <textarea name="text" id="" cols="30" rows="10"></textarea>
                 </div>
-                <!-- post_container_contents -->
+                <!-- post_container_contents終了 -->
                 <div class="post_container_btn">
                     <input type="submit" value="送信">
                 </div>
@@ -49,11 +49,17 @@
             <div class="result">
                 @if(!empty($article))
                     @foreach($article as $value)
+                        <hr>
                         <p>
                             {{$value['title']}}
                         </p>
                         <p>
                             {{$value['text']}}
+                        </p>
+                        <p>
+                            <a href="{url{details}}">
+                                明細情報
+                            </a>
                         </p>
                     @endforeach
                 @endif

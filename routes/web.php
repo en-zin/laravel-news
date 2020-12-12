@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\MainController;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use App\Models\Article;
+
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -26,3 +30,7 @@ Route::post('add/post', 'PostsController@result');
 
 Route::get('/','MainController@main');
 Route::post('/','MainController@result');
+// Route::get('details',function() {
+//     // $article = Article::all();
+//     return 'aho';
+// });

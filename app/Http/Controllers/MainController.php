@@ -6,10 +6,9 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    //
+    //laravel_news接続時
     public function main() {
        $article = Article::all();
-        dump($article);
         return view('laravel_news_main',compact('article'));
     }
 
@@ -21,6 +20,8 @@ class MainController extends Controller
         $article ->text = $req->text;
         $article -> timestamps = false;
         $article->save();
-        return redirect('http://localhost');
+        $req->session()->regenerateToken();
+        return redirect('/');
     }
+    //明細ページ
 }
