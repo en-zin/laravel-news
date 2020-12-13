@@ -30,7 +30,7 @@ Route::post('add/post', 'PostsController@result');
 
 Route::get('/','MainController@main');
 Route::post('/','MainController@result');
-// Route::get('details',function() {
-//     // $article = Article::all();
-//     return 'aho';
-// });
+
+// 送られてきた'id'をパラメータとして使っている
+Route::get('/details/{id}/', 'DetailsController@details');
+Route::post('/details/{id}/', 'DetailsController@result');

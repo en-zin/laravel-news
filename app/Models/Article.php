@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
-    //
+    //insertするやつを決めている
     protected $fillable = ['title', 'text'];
-   
+
 }

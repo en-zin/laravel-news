@@ -45,23 +45,28 @@
                 <!-- post_container_btn終了 -->
             </form>
         </div>
+
         <div class="container">
             <div class="result">
                 @if(!empty($article))
-                    @foreach($article as $value)
-                        <hr>
-                        <p>
-                            {{$value['title']}}
-                        </p>
-                        <p>
-                            {{$value['text']}}
-                        </p>
-                        <p>
-                            <a href="{url{details}}">
-                                明細情報
-                            </a>
-                        </p>
-                    @endforeach
+                @foreach($article as $value)
+                <hr>
+                <p>
+
+                </p>
+                <p>
+                    {{$value['title']}}
+                </p>
+                <p>
+                    {{$value['text']}}
+                </p>
+                <p>
+                    <!-- $value['id']の部分がパラメータとして使えるようにしている -->
+                    <a href="{{ action('DetailsController@details', $value['id']) }}">
+                        明細情報
+                    </a>
+                </p>
+                @endforeach
                 @endif
             </div>
         </div>
