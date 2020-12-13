@@ -31,7 +31,7 @@ class DetailsController extends Controller
 
         $commment->create([
             'id' => request('id'),
-            'comment' => request('commnet'),
+            'comment' => request('comment'),
         ]);
 
         return redirect('details');
