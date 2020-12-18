@@ -28,9 +28,15 @@ use function PHPUnit\Framework\returnSelf;
 Route::get('add/post','PostsController@post');
 Route::post('add/post', 'PostsController@result');
 
-Route::get('/','MainController@main');
-Route::post('/','MainController@result');
+
+// laravel-newsここから
+Route::get('/', 'MainController@index')->name('main_route');
+Route::post('/', 'MainController@create');
 
 // 送られてきた'id'をパラメータとして使っている
-Route::get('/details/{id}/', 'DetailsController@details');
-Route::post('/details/{id}/', 'DetailsController@result');
+//明細ページに遷移する
+Route::get('/details/{id}/', 'DetailsController@index')->name('details_route');
+//明細ページからpost通信されたら起動する
+Route::post('/details/{id}/', 'DetailsController@create');
+// 消去ボタンが押されたら通るルート
+Route::delete('/details/{id}/', 'DetailsController@destroy');

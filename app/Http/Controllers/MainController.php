@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 use App\Models\Article;//modelが存在してくれているだけでデータベースとの接続ができている
+use App\Http\Requests\TestRequest;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     //laravel_news接続時
-    public function main() {
+    public function index() {
        $article = Article::all();
         return view('laravel_news_main',compact('article'));
     }
 
     //post通信
-    public function result(Request $req)
+    public function create(TestRequest $req)
     {
         $article = new Article(); //$articleはModelsディレクトリにあるArticleと定義  役割DBとの通信
         $article -> title = $req -> title;
@@ -22,6 +23,7 @@ class MainController extends Controller
         $article->save();
         $req->session()->regenerateToken();
         return redirect('/');
+
     }
 
 

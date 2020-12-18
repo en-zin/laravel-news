@@ -9,16 +9,31 @@
 </head>
 
 <body>
+
     <main>
         <div class="container">
             <h1>
-                Laravel-news
+                <p>
+                    <a href="{{route('main_route') }}">
+                        Laravel-News
+                    </a>
+                </p>
             </h1>
+            @if($errors->any())
+                <ul>
+                    @foreach($errors->all() as $err )
+                        <li>
+                            {{$err}}
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
         <div class="container">
             <h2>
                 さぁ、最新のニュースをシェアしましょう
             </h2>
+
             <form action="" method="POST">
                 @csrf
                 <div class="post_container_title">
@@ -62,7 +77,8 @@
                 </p>
                 <p>
                     <!-- $value['id']の部分がパラメータとして使えるようにしている -->
-                    <a href="{{ action('DetailsController@details', $value['id']) }}">
+                    <!-- actionはget要素 -->
+                    <a href="{{ route('details_route', $value['id']) }}">
                         明細情報
                     </a>
                 </p>

@@ -10,15 +10,32 @@
 
 <body>
 
+    <h1>
+        <p>
+            <a href="{{ route('main_route') }}">
+                Laravel-News
+            </a>
+        </p>
+    </h1>
+    @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $err )
+                <li>
+                    {{$err}}
+                </li>
+            @endforeach
+        </ul>
+    @endif
+
+    @foreach($details as $value)
     <p>
-        {{$details['title']}}
+        {{$value['title']}}
     </p>
     <p>
-        {{$details['text']}}
+        {{$value['text']}}
     </p>
-    <p>
-        {{$id}}
-    </p>
+    @endforeach
+
     <div class="container">
         <form action="" method="POST">
             @csrf
@@ -39,6 +56,24 @@
         </form>
     </div>
 
+
+    <div class="container">
+
+        @if(!empty($comment))
+            @foreach($comment as $value)
+            <!-- actionでルーティング処理をするとget要素になりパラメータが増えバグる -->
+                <form action="" method="post">
+                    @csrf
+                    @method('DELETE')
+                        <p>
+                            {{$value['comment']}}
+                        </p>
+                    <input type="hidden" name="comment_id" value="{{$value['comment_id']}}">
+                    <input type="submit" value="消去">
+                </form>
+            @endforeach
+        @endif
+    </div>
 
 
 
