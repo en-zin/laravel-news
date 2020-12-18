@@ -25,7 +25,7 @@ class DetailsController extends Controller
     }
 
     //引数の$idはパラメータで使っている数字
-    public function create(CommentRequest $id) {
+    public function create(CommentRequest $req) {
 
         $comment = new Comment();
 
@@ -38,7 +38,7 @@ class DetailsController extends Controller
         return redirect(route('details_route',[
 
             //id => $idはパラメータ部分はこれを使ってね的な感じです。
-            'id' => $id,
+            'id' => request('id'),
 
         ]));
 
