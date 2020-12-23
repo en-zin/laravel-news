@@ -30,8 +30,13 @@ Route::post('add/post', 'PostsController@result');
 
 
 // laravel-newsここから
+// Route::get('/', 'LoginController@index')->name('Login_route');
+// Route::post('/', 'LoginController@create')->name('Login_route');
+
 Route::get('/', 'MainController@index')->name('main_route');
 Route::post('/', 'MainController@create');
+Route::get('/edit/{id}/', 'EditControler@index')->name('edit_route');
+Route::post('/edit/{id}/', 'EditControler@update');
 
 // 送られてきた'id'をパラメータとして使っている
 //明細ページに遷移する
