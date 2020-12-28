@@ -10,7 +10,7 @@ class MainController extends Controller
     //laravel_news接続時
     public function index() {
        $article = Article::all();
-        return view('laravel_news_main',compact('article'));
+        return view('layout',compact('article'));
     }
 
     //post通信
